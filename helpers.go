@@ -72,7 +72,6 @@ func (o Outputs) ExtractImagesResults() (images []ImageOutput) {
 						case "url":
 							var err error
 							if output.URL, err = url.Parse(value.(string)); err != nil {
-								fmt.Println("Error", err)
 								output.URL = nil // just to be sure
 							}
 						}
