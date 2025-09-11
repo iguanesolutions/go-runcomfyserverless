@@ -1,6 +1,6 @@
 # RunComfy serverless API Go bindings
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/iguanesolutions/runcomfyserverless.svg)](https://pkg.go.dev/github.com/iguanesolutions/runcomfyserverless) [![Go report card](https://goreportcard.com/badge/github.com/iguanesolutions/runcomfyserverless)](https://goreportcard.com/report/github.com/iguanesolutions/runcomfyserverless)
+[![Go Reference](https://pkg.go.dev/badge/github.com/iguanesolutions/go-runcomfyserverless.svg)](https://pkg.go.dev/github.com/iguanesolutions/go-runcomfyserverless) [![Go report card](https://goreportcard.com/badge/github.com/iguanesolutions/go-runcomfyserverless)](https://goreportcard.com/report/github.com/iguanesolutions/go-runcomfyserverless)
 
 Go bindings to interract with [RunComfy](https://www.runcomfy.com/) [serverless API](https://www.runcomfy.com/comfyui-api).
 
@@ -9,12 +9,13 @@ Based on the official [API reference](https://docs.runcomfy.com/deployment-endpo
 ## Installation
 
 ```bash
-go get -u github.com/iguanesolutions/runcomfyserverless
+go get -u github.com/iguanesolutions/go-runcomfyserverless
 ```
 
 ## Example
 
-A complete code usage example can be found here.
+A complete code usage example can be found in the [example folder](https://github.com/iguanesolutions/go-runcomfyserverless/blob/main/example/main.go).
+It executes a custom [Flux Kontext workflow](https://docs.comfy.org/tutorials/flux/flux-1-kontext-dev).
 
 Execute it with:
 
