@@ -61,7 +61,7 @@ func (d *Deployment) request(ctx context.Context, method, endpointURI string, re
 	}
 	defer resp.Body.Close()
 	switch resp.StatusCode {
-	case http.StatusOK:
+	case http.StatusOK, http.StatusAccepted:
 		if respPayload == nil {
 			return
 		}
@@ -72,7 +72,7 @@ func (d *Deployment) request(ctx context.Context, method, endpointURI string, re
 			return
 		}
 		return
-	case http.StatusForbidden:
+	case http.StatusForbidden: // may be some HTTP codes used by the API should be added too
 		var he HTTPError
 		if err = json.NewDecoder(resp.Body).Decode(&he); err != nil {
 			err = fmt.Errorf("failed to decode error payload after HTTP status code %s: %w", resp.Status, err)

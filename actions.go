@@ -173,3 +173,33 @@ func (d *Deployment) Result(ctx context.Context, requestID string) (result Resul
 	}
 	return
 }
+
+/*
+	Cancel
+*/
+
+const (
+	RequestStatusCancellationRequested RequestStatus = "cancellation_requested" // only for Cancel()
+	RequestStatusNotCancellable        RequestStatus = "not_cancellable"        // only for Cancel()
+)
+
+type cancelResponsePayload struct {
+	RequestID string        `json:"request_id"`
+	Status    RequestStatus `json:"status"`
+	APIError
+}
+
+// Cancel cancels a queued or running job. Returned status can be either RequestStatusCancellationRequested or
+// RequestStatusNotCancellable
+func (d *Deployment) Cancel(ctx context.Context, requestID string) (status RequestStatus, err error) {
+	var resp cancelResponsePayload
+	if err = d.request(ctx, "POST", fmt.Sprintf("requests/%s/cancel", requestID), nil, &resp); err != nil {
+		err = fmt.Errorf("failed to perform the HTTP request: %w", err)
+	}
+	if resp.APIError.Code == 0 {
+		status = resp.Status
+	} else {
+		err = resp.APIError
+	}
+	return
+}
