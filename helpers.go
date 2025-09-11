@@ -57,11 +57,11 @@ func (o Outputs) ExtractImagesResults() (images []ImageOutput) {
 	for nodeID, nodeOutput := range o {
 		for outputType, outputPayload := range nodeOutput {
 			if outputType == "images" {
-				if imagesList, ok := outputPayload.(map[string]any); ok {
+				for _, image := range outputPayload.([]any) {
 					output := ImageOutput{
 						FromNodeID: nodeID,
 					}
-					for key, value := range imagesList {
+					for key, value := range image.(map[string]any) {
 						switch key {
 						case "filename":
 							output.FileName = value.(string)
@@ -72,6 +72,7 @@ func (o Outputs) ExtractImagesResults() (images []ImageOutput) {
 						case "url":
 							var err error
 							if output.URL, err = url.Parse(value.(string)); err != nil {
+								fmt.Println("Error", err)
 								output.URL = nil // just to be sure
 							}
 						}
