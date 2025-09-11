@@ -15,6 +15,7 @@ const (
 	Inference
 */
 
+// Override defines a single override to send to the deployed workflow
 type Override struct {
 	NodeID string
 	Inputs map[string]any
@@ -30,9 +31,9 @@ type inferenceRespPayload struct {
 	ResultURL string `json:"result_url"`
 	CancelURL string `json:"cancel_url"`
 	APIError
-	// we do not care about the returned URLs as we can build them ourself
 }
 
+// Start allows to submit a request to a deployment
 func (d *Deployment) Start(ctx context.Context, overrides []Override) (requestID string, err error) {
 	// build payload
 	payload := overridePayload{
@@ -62,6 +63,7 @@ func (d *Deployment) Start(ctx context.Context, overrides []Override) (requestID
 	Status
 */
 
+// RequestStatus represents the status of a serverless request initiated with Start()
 type RequestStatus string
 
 const (
@@ -71,6 +73,7 @@ const (
 	RequestStatusCanceled   RequestStatus = "canceled"
 )
 
+// StatusResponse contains the status of a request and additional information about its position in the queue.
 type StatusResponse struct {
 	Status        RequestStatus `json:"status"`
 	QueuePosition int           `json:"queue_position"`
@@ -84,6 +87,7 @@ type statusResponsePayload struct {
 	APIError
 }
 
+// Status retrieves the current status of a request.
 func (d *Deployment) Status(ctx context.Context, requestID string) (status StatusResponse, err error) {
 	var resp statusResponsePayload
 	if err = d.request(ctx, "GET", fmt.Sprintf("requests/%s/status", requestID), nil, &resp); err != nil {
@@ -102,10 +106,11 @@ func (d *Deployment) Status(ctx context.Context, requestID string) (status Statu
 */
 
 const (
-	RequestStatusSucceeded RequestStatus = "succeeded" // only for Result(), on Status() is RequestStatusCompleted
-	RequestStatusFailed    RequestStatus = "failed"    // only for Result(), on Status() is RequestStatusCompleted
+	RequestStatusSucceeded RequestStatus = "succeeded" // only for Result(), on Status() it is RequestStatusCompleted
+	RequestStatusFailed    RequestStatus = "failed"    // only for Result(), on Status() it is RequestStatusCompleted
 )
 
+// ResultResponse contains all the information of a completed request.
 type ResultResponse struct {
 	Status   RequestStatus `json:"status"`
 	Created  time.Time     `json:"created_at"`
@@ -114,6 +119,7 @@ type ResultResponse struct {
 	Error    []ResultError `json:"error"`       // only for RequestStatusFailed
 }
 
+// ResultError represents an error that occurred during the execution of a request.
 type ResultError struct {
 	Code      int    `json:"errorCode"`
 	Message   string `json:"error"`
@@ -154,6 +160,7 @@ type resultResponsePayload struct {
 	APIError
 }
 
+// Result retrieves the result of a request.
 func (d *Deployment) Result(ctx context.Context, requestID string) (result ResultResponse, err error) {
 	var resp resultResponsePayload
 	if err = d.request(ctx, "GET", fmt.Sprintf("requests/%s/result", requestID), nil, &resp); err != nil {
