@@ -25,7 +25,7 @@ go run example/main.go
 
 ### Generation
 
-Note: lambda was warn
+Note: deployment was warn
 
 ```text
 Job sent: f033d089-3518-49c4-8abb-ef53018f7260
