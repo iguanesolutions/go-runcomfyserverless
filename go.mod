@@ -1,4 +1,4 @@
-module github.com/iguanesolutions/runcomfyserverless
+module github.com/iguanesolutions/go-runcomfyserverless
 
 go 1.25.0
 

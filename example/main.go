@@ -12,7 +12,7 @@ import (
 	"syscall"
 	"time"
 
-	rcsl "github.com/iguanesolutions/runcomfyserverless"
+	rcsl "github.com/iguanesolutions/go-runcomfyserverless"
 )
 
 const (
