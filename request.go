@@ -87,7 +87,7 @@ func (d *Deployment) request(ctx context.Context, method, endpointURI string, re
 	}
 }
 
-// APIError represents an error received thru the API (request was successfull but API returns an inner error)
+// APIError represents an error received thru the API (request was successful but API returns an inner error)
 type APIError struct {
 	Code    int    `json:"error_code"`
 	Message string `json:"error_message"`

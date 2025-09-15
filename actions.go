@@ -127,7 +127,7 @@ type ResultError struct {
 }
 
 func (rs *ResultResponse) UnmarshalJSON(data []byte) (err error) {
-	// Apply masking to retreive raw values
+	// Apply masking to retrieve raw values
 	type mask ResultResponse
 	tmp := struct {
 		Created  string `json:"created_at"`

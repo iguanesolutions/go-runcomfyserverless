@@ -39,21 +39,21 @@ func main() {
 		[]rcsl.Override{
 			// Prompt
 			{
-				NodeID: "31", // relative to your saved workflow, export the api workflow to retreive the infos
+				NodeID: "31", // relative to your saved workflow, export the api workflow to retrieve the infos
 				Inputs: map[string]any{
 					"value": "Using this elegant style, create a portrait of an elephant wearing a pearl tiara and lace collar, maintaining the same refined quality and soft color tones.",
 				},
 			},
 			// Image
 			{
-				NodeID: "16", // relative to your saved workflow, export the api workflow to retreive the infos
+				NodeID: "16", // relative to your saved workflow, export the api workflow to retrieve the infos
 				Inputs: map[string]any{
 					"image": imgData,
 				},
 			},
 			// Seed
 			{
-				NodeID: "27", // relative to your saved workflow, export the api workflow to retreive the infos
+				NodeID: "27", // relative to your saved workflow, export the api workflow to retrieve the infos
 				Inputs: map[string]any{
 					"value": int64(rand.Uint64()),
 				},
