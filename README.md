@@ -1,6 +1,6 @@
 # RunComfy serverless API Go bindings
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/iguanesolutions/go-runcomfyserverless.svg)](https://pkg.go.dev/github.com/iguanesolutions/go-runcomfyserverless) [![Go report card](https://goreportcard.com/badge/github.com/iguanesolutions/go-runcomfyserverless)](https://goreportcard.com/report/github.com/iguanesolutions/go-runcomfyserverless)
+[![Go Reference](https://pkg.go.dev/badge/github.com/iguanesolutions/go-runcomfyserverless.svg)](https://pkg.go.dev/github.com/iguanesolutions/go-runcomfyserverless) [![Go Report Card](https://goreportcard.com/badge/github.com/iguanesolutions/go-runcomfyserverless)](https://goreportcard.com/report/github.com/iguanesolutions/go-runcomfyserverless)
 
 Go bindings to interract with [RunComfy](https://www.runcomfy.com/) [serverless API](https://www.runcomfy.com/comfyui-api).
 
